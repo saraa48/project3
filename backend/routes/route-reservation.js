@@ -16,9 +16,9 @@ Router.get("/", (req, res) => {
   });
 //ajouter reservt
   Router.post("/", (req, res) => {
-    const {  NbPersonne,heure, phone ,date} = req.body;
+    const {  NbPersonne,heure, phone,name,email ,date} = req.body;
   
-    const newReserve = new reservation({ date, NbPersonne,heure, phone });
+    const newReserve = new reservation({ name,email,date, NbPersonne,heure, phone });
     newReserve
       .save()
       .then(data => res.json(data))
@@ -35,9 +35,9 @@ Router.get("/", (req, res) => {
   //modifier reservt
   Router.put("/:_id", (req, res) => {
     const { _id } = req.params;
-    const { date, NbPersonne, phone,heure } = req.body;
+    const {name,email, date, NbPersonne, phone,heure, } = req.body;
     
-    reservation.findOneAndUpdate({ _id }, { $set: { date, NbPersonne,phone, heure } })
+    reservation.findOneAndUpdate({ _id }, { $set: { name,email,date, NbPersonne,phone, heure } })
       .then(data => res.json(data))
       .catch(err => res.send("error"));
   });

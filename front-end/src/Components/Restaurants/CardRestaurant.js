@@ -6,7 +6,7 @@ import React, { Component } from "react";
 
 class CardRestaurant extends Component {
   render() {
-    const { restaurant, deleteRestaurant, getRestaurant } = this.props;
+    const { restaurant, deleteRestaurant, getRestaurant} = this.props;
     return (
       <div>
         <figure className="snip1256">
@@ -16,16 +16,19 @@ class CardRestaurant extends Component {
             <p>{restaurant.specialite}</p>
             <p>{restaurant.address}</p>
 
+
             <div className="btn-card">
+            
               <button
                 className=" btn btn-danger"
                 onClick={() => deleteRestaurant(restaurant._id)}
               >
                 Supprimer
               </button>
-              <Link to="/menu">
+              <Link to={`/menu/${restaurant._id}`}>
                 <button className="btn">Voir menu</button>
               </Link>
+              
               <Update getRestaurant={getRestaurant} restaurant={restaurant} />
             </div>
           </figcaption>

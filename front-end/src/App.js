@@ -24,9 +24,9 @@ function App() {
       <BrowserRouter>
       <Switch>
         <Route exact path="/" component={ListRestaurant}/>
-        <Route exact path="/menu" >
+        <Route exact path="/menu/:id" component={ListMenu}>
           
-         <ListMenu/>
+         {/* <ListMenu/> */}
         
           </Route>
           <Route  exact path="/galery" component={Galery} />

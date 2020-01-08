@@ -18,9 +18,10 @@ class Navebar extends Component {
                 <span>
                   <input
                     type="text"
-                    name=""
-                    placeholder="Search"
+                    
+                    placeholder="Search for your favorite restau"
                     className="input"
+                    onChange={(e)=>{this.props.changeName(e.target.value)}}
                   />
                 </span>
               </div>

@@ -12,11 +12,11 @@ class ListMenu extends Component {
     modal: false
   };
   componentDidMount = () => {
-    this.getMenu();
+    this.getMenu(this.props.match.params.id);
   };
 
-  getMenu = () => {
-    axios.get("/ProjectRest/menu/").then(res =>
+  getMenu = (idRest) => {
+    axios.get(`/ProjectRest/menu/oneRest/${idRest}`).then(res =>
       this.setState({
         OurMenu: res.data
       })
@@ -33,7 +33,8 @@ class ListMenu extends Component {
         plat: nMenu.plat,
         description: nMenu.description,
         price: nMenu.price,
-        type: nMenu.type
+        type: nMenu.type,
+        
       })
       .then(this.getMenu);
 
@@ -53,6 +54,7 @@ class ListMenu extends Component {
   toggle = () => this.setState({ ...this.state, modal: !this.state.modal });
 
   render() {
+    console.log(this.props)
     return (
       <div>
         <Navebar />
@@ -71,13 +73,14 @@ class ListMenu extends Component {
           <FontAwesome className="fas fa-backward angle " />
         </Link> */}
 
-          <AddMenu
+         
+        </div>
+        <AddMenu
             AddMenu={this.newMenu}
             modal={this.state.modal}
             toggle={this.toggle}
             isEdite={false}
           />
-        </div>
       </div>
     );
   }
